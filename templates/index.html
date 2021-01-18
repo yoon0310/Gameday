@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<meta property="og:site_name" content="Gameday"/>
+	<!--<meta property="og:image" content="http://oneyoon.com/assets/images/thumbnail/thumbnail_1200_627_01.jpg">-->
+
+	<title>Gameday</title>
+
+	<link href="../static/assets/css/reset.css" rel="stylesheet">
+	<link href="../static/assets/css/fullpage.css" rel="stylesheet" type="text/css"/>
+	<link href="../static/assets/css/yoon.css" rel="stylesheet"/>
+
+	<script src="../static/assets/js/modernizr.js"></script>
+
+	<link href="../static/assets/images/favicon.png" rel="shortcut icon">
+
+	<link herf="assets/images/favicon.svg" rel="icon" type="image/svg+xml">
+	<link herf="assets/images/favicon.png" rel="apple-touch-icon">
+	<link herf="assets/images/favicon.svg" rel="mask-icon" color="#0066B3">
+
+	<link href="../static/assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+	<script>
+
+
+
+            $(document).ready(function () {
+                // index.html 로드가 완료되면 자동으로 showNews() 함수를 호출합니다.
+                showNews();
+            });
+
+            function showNews() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/list',
+                    data: {},
+                    success: function (response) {
+						if (response['result'] == 'success'){
+							let newsLists = response['news_list']
+							for (let i = 0; i < newsLists.length; i++) {
+								let news = newsLists[i]
+								//let title = news['title']
+								//let newsUrl = news['newsUrl']
+								//let imgUrl = news['imgUrl']
+								//let desc = news['desc']
+								//let publisher = news['publisher']
+								//let date = news['date']
+								let {title, newsUrl, imgUrl, desc, publisher, date} = news
+
+								let tempHtml = `
+									<div class="container container-fluid card">
+										<div class="box category">
+										<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+										<img src="${imgUrl}" alt=""></div>
+										</div>
+									</div>`
+
+								// 7. #card에 tempHtml을 붙입니다.
+								$('#card').append(tempHtml)
+								}
+							}}
+								});
+							}
+
+
+	</script>
+
+</head>
+	
+<body data-preloader="2" class="basic"> <!--이게 필요했던가 체크-->
+	
+	<div id="fullpage">
+		
+		<div class="header">
+			<div class="layout">
+
+				<div class="layout-top-left">
+
+				<a href="index.html" class="logo">
+					<h2>gameday<font class="font-family-ptserif" color="#0066B3">.</font></h2>
+				</a>
+
+				<div class="layout-top-left-rotated">
+					<nav class="navigation navigation-text">
+						<ul>
+							<li>
+								<font color="#0066B3">KBO</font>
+							</li>
+							<li>
+							<font color="#a9a9a9">MLB</font>
+							</li>
+							<li>
+							<font color="#a9a9a9">NBA</font>
+							</li>
+							<li>
+							<font color="#a9a9a9">Premier League</font><!--EPL-->
+							</li>
+							<li>
+							<font color="#a9a9a9">La Liga</font>
+							</li>
+							<li>
+							<font color="#a9a9a9">Bundesliga</font>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				</div>
+
+				<div class="layout-bottom-left">
+					<nav class="navigation navigation-text">
+						<ul>
+							<li>
+							UNTITLED
+							</li>
+
+						</ul>
+					</nav>
+				</div>
+
+				<div class="layout-bottom-right">
+				  <nav class="navigation navigation-text">
+						<ul>
+							<li>
+							<a href="index.html">EN</a>
+							</li>
+							<li>
+							<a href="index.html"><font color="#0066B3">KR</font></a>
+							</li>
+						</ul>
+					</nav>
+				</div>       
+
+			</div>
+
+			<nav class="cd-stretchy-nav">
+				<a class="cd-nav-trigger" href="#0">
+					<span aria-hidden="true"></span>
+				</a>
+
+				<ul>
+					<li><a href="index.html" class="active"><span>KBO</span></a></li>
+					<li><a href="portfolio.html"><span>MLB</span></a></li>
+					<li><a href="about.html"><span>NBA</span></a></li>
+					<li><a href="untitled.html"><span>Premier League</span></a></li>
+					<li><a href="blog.html"><span>La Liga</span></a></li>
+					<li><a href="blog.html"><span>Bundesliga</span></a></li>
+				</ul>
+
+				<span aria-hidden="true" class="stretchy-nav-bg"></span>
+			</nav>
+				
+			<header>
+			<div id="header-container">
+		  	<div id="burger-wrapper">
+				<div id="burger-circle"></div>
+				<div id="menu-burger">
+				<!--<span></span><span></span>-->
+				</div>
+			</div>
+			</div>
+    		</header>
+			
+            <div id="menu-overlay">
+
+				<div id="close-menu"></div>  
+		
+				<div class="outer">
+				<div class="inner">
+					<nav class="visible-mobile">
+					<!--<nav>-->                   
+						<ul class="main-menu">
+							<li class="mp active"><a class="ajax-link menu-link" data-type="page-transition" href="portfolio.html"><span></span>KBO</a></li>
+							<li class="mp"><a class="ajax-link menu-link" data-type="page-transition" href="about.html"><span></span>MLB</a></li>
+							<li class="mp"><a class="ajax-link menu-link" data-type="page-transition" href="untitled.html"><span></span>NBA</a></li>
+							<li class="mp"><a class="ajax-link menu-link" data-type="page-transition" href="blog.html"><span></span>Premier League</a></li>
+							<li class="mp"><a class="ajax-link menu-link" data-type="page-transition" href="blog.html"><span></span>La Liga</a></li>
+							<li class="mp"><a class="ajax-link menu-link" data-type="page-transition" href="blog.html"><span></span>Bundesliga</a></li>
+							<!--<br>
+							<li class="mp"><a class="ajax-link menu-link" data-type="page-transition" href="index.html"><span></span>🇺🇸</a> / <a class="ajax-link menu-link" data-type="page-transition" href="index_kr.html"><span></span>🇰🇷</a></li>
+							-->
+							<!--
+							<li class="mp active"><a class="ajax-link menu-link" data-type="page-transition" href="index.html"><span></span>Home</a></li>
+							<li class="mp has-sub"><a href="#"><span></span>Portfolio</a>
+								<ul>
+									<li><a class="ajax-link" data-type="page-transition" href="portfolio.html">Visible Text</a></li>
+									<li><a class="ajax-link" data-type="page-transition" href="portfolio1.html">Black Overlay</a></li>
+								</ul>
+							</li>
+							-->
+						</ul>                
+					</nav>
+				</div>
+				</div>
+
+            </div>
+		</div>
+		
+		<div class="section section0">
+		<div class="content-fullscreen">
+
+			<div class="container">
+				<div class="fullscreen-position-middle text-center">
+					<h1 class="display-1"><font color="#0066B3">It's Gameday Y'all!<br>Are you ready?</font></h1>
+				</div>
+			</div>
+
+			<div id="hero"> <!--여기다 넣으면 클릭안됨 div 한단계 위도 똑같이 안됨.-->
+			<!--<div id="hero" class="has-image">-->
+			<div id="hero-styles" class="opacity-onscroll parallax-onscroll">
+			<div class="scroll-down-wrap no-border">
+				<a href="#" class="section-down-arrow">
+				<!--<a href="#featured Projects" class="section-down-arrow">-->
+					<svg class="nectar-scroll-icon" viewBox="0 0 30 45" enable-background="new 0 0 30 45">
+						<path class="nectar-scroll-icon-path" fill="none" stroke="#0066B3" stroke-width="2" stroke-miterlimit="10" d="M15,1.118c12.352,0,13.967,12.88,13.967,12.88v18.76  c0,0-1.514,11.204-13.967,11.204S0.931,32.966,0.931,32.966V14.05C0.931,14.05,2.648,1.118,15,1.118z">
+						</path>
+					</svg>
+				</a>
+			</div>        		
+			</div>
+			</div>
+			
+		</div>
+		</div>
+
+		<!--
+		<div id="hero"> <여기다 넣으면 클릭됨 BUTTT 갑자기 아이패드에서 불안정해져서 현재 작동 멈춰놓음>
+		<!-<div id="hero" class="has-image">->
+		<div id="hero-styles" class="opacity-onscroll parallax-onscroll">
+			<div class="scroll-down-wrap no-border">
+				<a href="#" class="section-down-arrow">
+				<!-<a href="#featured Projects" class="section-down-arrow">->
+					<svg class="nectar-scroll-icon" viewBox="0 0 30 45" enable-background="new 0 0 30 45">
+						<path class="nectar-scroll-icon-path" fill="none" stroke="#0066B3" stroke-width="2" stroke-miterlimit="10" d="M15,1.118c12.352,0,13.967,12.88,13.967,12.88v18.76  c0,0-1.514,11.204-13.967,11.204S0.931,32.966,0.931,32.966V14.05C0.931,14.05,2.648,1.118,15,1.118z">
+						</path>
+					</svg>
+				</a>
+			</div>        		
+		</div>
+		</div>-->
+
+		<div class="section section0 fp-auto-height fp-auto-height-responsive">
+		<div id="portfolio" class="content-min-height fp-noscroll">
+
+     	 	<div class="content-01">
+			<!--<div class="margin-left-x-grid-padding"> 이것은 필요한 것이던가... 아 다 까먹어 버렸다. -->
+
+			<div class="container">
+				<ul class="grid-xl-12-of-12 grid-lg-12-of-12 grid-md-12-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+					<li class="filter filter-active" data-filter="all">All</li>
+					<li class="filter" data-filter="news">News</li>
+					<li class="filter" data-filter="instagram">Instagram</li>
+					<li class="filter" data-filter="youtube">Youtube</li>
+					<!--<div style="clear:both;"></div>-->
+				</ul>
+          	</div>
+
+         	<div class="container container-fluid card" id="card">
+				<!--
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="" alt=""></div>
+				</div>
+
+				<div class="box category news">
+				<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-12-of-12 grid-xs-12-of-12">
+				<img src="" alt=""></div> <assets/images/thumbnail/thumbnail_720_720_03.jpg>
+				</div>
+				-->
+
+          	</div>
+
+			</div>
+
+		</div>
+
+			<div class="content-full-height container"> <!-- div 한단계 안? 아님 밖으로? 잘 모르겠다 -->
+			<div clsss="grid-xl-12-of-12">
+				<div class="layout-full-height-bottom">
+					<p>&copy; Yoon, All Rights Reserved</p>
+				</div>
+			</div>
+			</div>
+
+		</div>
+
+		<!--
+		<div class="section section1 fp-auto-height fp-auto-height-responsive">
+		<div id="featured Projects" class="content-min-height fp-noscroll">
+
+			<div class="content-02">
+			<div class="margin-left-x-grid-padding">
+
+				<div class="container">
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+					<div class="grid-xl-3-of-12 grid-lg-4-of-12 grid-md-6-of-12 grid-sm-6-of-12 grid-xs-12-of-12">
+						<img src="assets/images/thumbnail/thumbnail_720_720_03.jpg" alt="">
+					</div>
+
+				</div>
+
+			</div>
+
+				<div class="container">
+					<div class="grid-xl-12-of-12 grid-lg-12-of-12 grid-md-12-of-12 grid-sm-12-of-12 grid-xs-12-of-12 visible-pc text-right button-01 button-position-01">
+						<a href="portfolio.html"><span data-hover="VIEW MORE WORKS">VIEW MORE WORKS</span></a>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+		<div class="content-full-height container">
+			<div clsss="grid-xl-12-of-12">
+				<div class="layout-full-height-bottom">
+					<p>&copy; Yoon, All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		-->
+	</div>
+	
+<script src="../static/assets/bower_components/gsap/src/minified/TweenMax.min.js"></script>
+
+<script src="../static/assets/js/jquery-2.1.4.js"></script>
+<script src="../static/assets/js/scrolloverflow.js" type="text/javascript"></script>
+<script src="../static/assets/js/fullpage.js" type="text/javascript"></script>
+	
+<script type="text/javascript">
+	new fullpage('#fullpage', {
+		scrollOverflow: true,
+		fixedElements: '.header',
+		scrollingSpeed: 1000,
+		onLeave: function(origin, destination, direction){
+		var leavingSection = this;
+		var x = window.matchMedia("(max-width: 720px)");
+
+		if(origin.index == 0 && direction =='down' && x.matches){
+			$('.header .logo').hide();
+		}
+					
+		else if(origin.index == 1 && direction == 'up' || x.matches){
+			$('.header .logo').show();
+		}
+		}		
+	});
+	
+</script>
+	
+<script src="../static/assets/js/main.js"></script>
+<script src="../static/assets/js/scripts.js"></script>
+	
+</body>
+	
+</html>
